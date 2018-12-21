@@ -65,7 +65,7 @@
     "diskStorageType": "Standard_LRS",
     "publicIPAddressName": "[concat(parameters('NameVm'),'myPublicIPD')]",
     "publicIPAddressType": "Dynamic",
-    "vmName": "[variables('NameVm')]",
+    "vmName": "[parameters('NameVm')]",
     "virtualNetworkName": "[concat(parameters('NameVm'),'MyVDNET')]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
   },
