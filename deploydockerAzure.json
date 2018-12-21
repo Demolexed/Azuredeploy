@@ -46,7 +46,7 @@
         "description": "Location for all resources."
       }
     },
-    "NameVm": {
+    "Toto": {
       "type":"string",
       "metadata": {
         "description": "Unique for the Virtual Machine."
@@ -57,16 +57,16 @@
     "imagePublisher": "Canonical",
     "imageOffer": "UbuntuServer",
     "OSDiskName": "osdiskfordockersimple",
-    "nicName": "[concat(parameters('NameVm'), 'VMNicD')]",
+    "nicName": "[concat(parameters('Toto'), 'VMNicD')]",
     "extensionName": "DockerExtension",
     "addressPrefix": "10.0.0.0/16",
     "subnetName": "Subnet",
     "subnetPrefix": "10.0.0.0/24",
     "diskStorageType": "Standard_LRS",
-    "publicIPAddressName": "[concat(parameters('NameVm'),'myPublicIPD')]",
+    "publicIPAddressName": "[concat(parameters('Toto'),'myPublicIPD')]",
     "publicIPAddressType": "Dynamic",
-    "vmName": "[parameters('NameVm')]",
-    "virtualNetworkName": "[concat(parameters('NameVm'),'MyVDNET')]",
+    "vmName": "[parameters('Toto')]",
+    "virtualNetworkName": "[concat(parameters('Toto'),'MyVDNET')]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
   },
   "resources": [
