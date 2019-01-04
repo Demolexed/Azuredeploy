@@ -83,8 +83,9 @@
     "publicIPAddressType": "Dynamic",
     "vmName": "[parameters('VMName')]",
     "virtualNetworkName": "[parameters('VMNetName')]",
-    "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
-  },
+    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'))]",
+    "subnetRef": "[concat(variables('vnetID'),'/subnets/', variables('subnetName'))]"
+},
   "resources": [
     {
       "apiVersion": "2017-04-01",
