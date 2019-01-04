@@ -4,12 +4,14 @@
   "parameters": {
     "adminUsername": {
       "type": "string",
+      "defaultValue": "gve",
       "metadata": {
         "description": "Username for the Virtual Machine."
       }
     },
     "adminPassword": {
       "type": "securestring",
+      "defaultValue": "XMw2U739dvNj",
       "metadata": {
         "description": "Password for the Virtual Machine."
       }
@@ -46,8 +48,15 @@
         "description": "Location for all resources."
       }
     },
-    "Toto": {
+    "VMName": {
       "type":"string",
+      "metadata": {
+        "description": "Unique for the Virtual Machine."
+      }
+    },
+    "AVSetName": {
+      "type":"string",
+      "defaultValue": "AVSet",
       "metadata": {
         "description": "Unique for the Virtual Machine."
       }
@@ -57,16 +66,17 @@
     "imagePublisher": "Canonical",
     "imageOffer": "UbuntuServer",
     "OSDiskName": "osdiskfordockersimple",
-    "nicName": "[concat(parameters('Toto'), 'VMNicD')]",
+    "nicName": "[concat(parameters('VMName'), 'VMNicD')]",
     "extensionName": "DockerExtension",
     "addressPrefix": "10.0.0.0/16",
     "subnetName": "Subnet",
     "subnetPrefix": "10.0.0.0/24",
     "diskStorageType": "Standard_LRS",
-    "publicIPAddressName": "[concat(parameters('Toto'),'myPublicIPD')]",
+    "publicIPAddressName": "[concat(parameters('VMName'),'myPublicIPD')]",
+    "availabilitySetName" :"[parameters('AVSetName')]",
     "publicIPAddressType": "Dynamic",
-    "vmName": "[parameters('Toto')]",
-    "virtualNetworkName": "[concat(parameters('Toto'),'MyVDNET')]",
+    "vmName": "[parameters('VMName')]",
+    "virtualNetworkName": "[concat(parameters('VMName'),'MyVDNET')]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
   },
   "resources": [
@@ -138,6 +148,9 @@
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
       ],
       "properties": {
+        "availabilitySet": {
+          "id": "[resourceId('Microsoft.Compute/availabilitySets',variables('availabilitySetName'))]"
+        },
         "hardwareProfile": {
           "vmSize": "[parameters('vmSize')]"
         },
