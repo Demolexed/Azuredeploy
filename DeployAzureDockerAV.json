@@ -83,7 +83,7 @@
     "publicIPAddressType": "Dynamic",
     "vmName": "[parameters('VMName')]",
     "virtualNetworkName": "[parameters('VMNetName')]",
-    "vnetID": "[resourceId(subscription().id, resourceGroup().name, 'Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'))]",
+    "vnetID": "[resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/', variables('subnetName'))]"
 },
   "resources": [
