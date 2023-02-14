@@ -11,7 +11,7 @@
     },
     "adminPassword": {
       "type": "securestring",
-      "defaultValue": "XMw2U739dvNj",
+      "defaultValue": "XMw2U739dvNjsdqsd",
       "metadata": {
         "description": "Password for the Virtual Machine."
       }
